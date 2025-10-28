@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, SearchArea, WeatherDisplay } from "../components";
+import { Header, SearchSection, WeatherDisplay } from "../components";
 import { useWeather } from "../hooks/useWeather";
 
 export default function Home() {
@@ -13,8 +13,8 @@ export default function Home() {
         {/* Header */}
         <Header />
 
-        {/* Search Area */}
-        <SearchArea
+        {/* Search Section */}
+        <SearchSection
           searchCity={searchCity}
           setSearchCity={setSearchCity}
           onSearch={handleSearch}

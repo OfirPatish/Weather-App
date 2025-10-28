@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { IoSunny, IoMoon } from "react-icons/io5";
+import { iconHover, tapScale, transitions } from "../../utils/animations";
 
 export function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
@@ -38,20 +39,16 @@ export function ThemeToggle() {
 
   return (
     <motion.div
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={iconHover}
+      whileTap={tapScale}
       onClick={handleToggle}
-      className="relative w-11 h-11 rounded-full flex items-center justify-center text-base-content transition-all duration-300 hover:backdrop-blur-lg hover:bg-base-content/10 hover:shadow-lg cursor-pointer active:bg-base-content/20"
+      className="relative w-11 h-11 rounded-full flex items-center justify-center text-base-content hover:backdrop-blur-lg hover:bg-base-content/10 hover:shadow-lg cursor-pointer active:bg-base-content/20"
       role="button"
       aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
     >
       <motion.div
         animate={{ rotate: isDark ? 180 : 0 }}
-        transition={{
-          type: "spring",
-          stiffness: 200,
-          damping: 20,
-        }}
+        transition={transitions.spring}
         className="text-lg"
       >
         {isDark ? (

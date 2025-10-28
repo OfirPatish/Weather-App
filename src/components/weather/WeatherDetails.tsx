@@ -2,6 +2,11 @@ import { motion } from "motion/react";
 import { WiThermometer, WiStrongWind, WiHumidity } from "react-icons/wi";
 
 import { WeatherData } from "../../types/weather";
+import {
+  fadeInUpLarge,
+  transitions,
+  buttonHover,
+} from "../../utils/animations";
 
 interface WeatherDetailsProps {
   weatherData: WeatherData;
@@ -34,18 +39,12 @@ export function WeatherDetails({ weatherData }: WeatherDetailsProps) {
       {detailCards.map((card) => (
         <motion.div
           key={card.label}
-          initial={{ opacity: 0, y: 30, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{
-            duration: 0.5,
-            delay: card.delay,
-            ease: [0.25, 0.46, 0.45, 0.94],
-          }}
-          whileHover={{
-            y: -2,
-            transition: { duration: 0.2 },
-          }}
-          className="card bg-base-100 shadow-lg hover:shadow-xl rounded-2xl border-none transition-all duration-300"
+          variants={fadeInUpLarge}
+          initial="initial"
+          animate="animate"
+          transition={transitions.smoothWithDelay(card.delay)}
+          whileHover={buttonHover}
+          className="card bg-base-100 shadow-lg hover:shadow-xl rounded-2xl border-none"
         >
           <div className="card-body p-4 sm:p-6 md:p-8">
             <div className="flex flex-col items-center text-center space-y-4">

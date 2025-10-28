@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { fadeInDownSmall, transitions } from "../../utils/animations";
 
 interface SearchSectionProps {
   searchCity: string;
@@ -21,9 +22,10 @@ export function SearchSection({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+      variants={fadeInDownSmall}
+      initial="initial"
+      animate="animate"
+      transition={transitions.smooth}
       className="flex flex-row gap-2 sm:gap-4 w-full max-w-full"
     >
       <motion.input
@@ -37,9 +39,9 @@ export function SearchSection({
         className="input input-bordered flex-1 min-w-0 rounded-2xl sm:rounded-[2.25rem] h-12 sm:h-14 text-base sm:text-lg lg:text-xl px-4 sm:px-6 bg-base-100 text-base-content placeholder-base-content/60 border-base-300 focus:border-primary focus:bg-base-100 focus:outline-none"
         disabled={loading}
         whileFocus={{
-          transition: { duration: 0.2 },
+          transition: transitions.fast,
         }}
-        transition={{ duration: 0.2 }}
+        transition={transitions.fast}
       />
       <motion.button
         onClick={onSearch}
@@ -47,7 +49,7 @@ export function SearchSection({
         className="btn btn-primary rounded-2xl sm:rounded-[2.25rem] h-12 sm:h-14 px-4 sm:px-8 text-base sm:text-lg lg:text-xl font-medium shadow-lg hover:shadow-xl transition-all duration-200 whitespace-nowrap flex-shrink-0"
         whileTap={{
           scale: 0.95,
-          transition: { duration: 0.1 },
+          transition: transitions.fast,
         }}
       >
         {loading ? (
