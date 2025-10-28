@@ -21,7 +21,7 @@ A modern, responsive weather application built with Next.js, DaisyUI, and the Op
 1. Clone and install dependencies:
 
 ```bash
-git clone https://github.com/yourusername/weather-app.git
+git clone https://github.com/OfirPatish/Weather-App.git
 cd weather-app
 npm install
 ```
@@ -48,20 +48,18 @@ Visit [http://localhost:3000](http://localhost:3000) to see the app.
 
 ## Deployment
 
-### Render
+Deploy to Vercel directly from your GitHub repository:
 
-- **Build Command:** `npm install && npm run build`
-- **Start Command:** `npm start`
-- Add `OPENWEATHERMAP_API_KEY` environment variable
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/OfirPatish/Weather-App.git)
 
-### Vercel
-
-Deploy directly from your GitHub repository or use:
+Or use the Vercel CLI:
 
 ```bash
 npm i -g vercel
 vercel
 ```
+
+**Remember to add your `OPENWEATHERMAP_API_KEY` environment variable in the Vercel project settings.**
 
 ---
 
