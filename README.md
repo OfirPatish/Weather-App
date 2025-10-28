@@ -2,6 +2,10 @@
 
 A modern, responsive weather application built with Next.js, DaisyUI, and the OpenWeatherMap API.
 
+## 🌐 Live Demo
+
+Check out the live app: [https://opdev-weather.vercel.app/](https://opdev-weather.vercel.app/)
+
 ## Features
 
 - Search weather by city name
