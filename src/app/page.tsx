@@ -1,66 +1,29 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import { Header, SearchArea, WeatherDisplay } from "../components";
+import { useWeather } from "../hooks/useWeather";
 
 export default function Home() {
+  const { searchCity, setSearchCity, weatherData, loading, handleSearch } =
+    useWeather();
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-base-200 to-base-300 flex flex-col items-center justify-center p-6 sm:p-8 lg:p-10">
+      <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl space-y-4 sm:space-y-6 lg:space-y-8">
+        {/* Header */}
+        <Header />
+
+        {/* Search Area */}
+        <SearchArea
+          searchCity={searchCity}
+          setSearchCity={setSearchCity}
+          onSearch={handleSearch}
+          loading={loading}
         />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+
+        {/* Weather Display */}
+        <WeatherDisplay weatherData={weatherData} />
+      </div>
     </div>
   );
 }
