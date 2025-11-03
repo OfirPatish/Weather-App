@@ -4,7 +4,7 @@ A modern, responsive weather application providing real-time data with a clean, 
 
 ## 🌐 Live Site
 
-Visit the app → https://opdev-weather.vercel.app/
+Visit the app → https://opdev-weather.vercel.app
 
 ## 👇 About
 
