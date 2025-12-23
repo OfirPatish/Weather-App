@@ -6,7 +6,7 @@ A modern, responsive weather application providing real-time data with a clean, 
 
 ## 🚀 Tech Stack
 
-**Frontend:** Next.js 16, React 19, TypeScript  
+**Frontend:** Next.js 15.5.7, React 19.1, TypeScript  
 **Styling:** Tailwind CSS 4, DaisyUI 5  
 **Animations:** Motion  
 **APIs:** OpenWeatherMap
