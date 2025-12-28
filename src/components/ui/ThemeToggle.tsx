@@ -3,12 +3,19 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { IoSunny, IoMoon } from "react-icons/io5";
-import { iconHover, tapScale, transitions } from "../../utils/animations";
+import {
+  iconHover,
+  tapScale,
+  transitions,
+  iconRotate,
+} from "../../utils/animations";
 
 export function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Check for saved theme preference or default to light
     const savedTheme = localStorage.getItem("theme");
     const prefersDark = window.matchMedia(
@@ -21,11 +28,7 @@ export function ThemeToggle() {
 
     // Set the theme
     document.documentElement.setAttribute("data-theme", initialTheme);
-
-    // Use setTimeout to avoid synchronous setState in effect
-    setTimeout(() => {
-      setIsDark(initialTheme === "dark");
-    }, 0);
+    setIsDark(initialTheme === "dark");
   }, []);
 
   const handleToggle = () => {
@@ -37,26 +40,40 @@ export function ThemeToggle() {
     setIsDark(!isDark);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleToggle();
+    }
+  };
+
+  if (!mounted) {
+    return (
+      <div className="w-11 h-11 rounded-full flex items-center justify-center" />
+    );
+  }
+
   return (
-    <motion.div
+    <motion.button
+      type="button"
       whileHover={iconHover}
       whileTap={tapScale}
       onClick={handleToggle}
-      className="relative w-11 h-11 rounded-full flex items-center justify-center text-base-content hover:backdrop-blur-lg hover:bg-base-content/10 hover:shadow-lg cursor-pointer active:bg-base-content/20"
-      role="button"
+      onKeyDown={handleKeyDown}
+      className="btn btn-ghost btn-circle w-11 h-11 sm:w-12 sm:h-12 hover:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary flex items-center justify-center p-0"
       aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
     >
       <motion.div
-        animate={{ rotate: isDark ? 180 : 0 }}
+        animate={iconRotate(isDark ? 180 : 0)}
         transition={transitions.spring}
-        className="text-lg"
+        className="flex items-center justify-center"
       >
         {isDark ? (
-          <IoMoon className="text-base-content" />
+          <IoMoon className="text-xl sm:text-2xl text-base-content" />
         ) : (
-          <IoSunny className="text-base-content" />
+          <IoSunny className="text-xl sm:text-2xl text-base-content" />
         )}
       </motion.div>
-    </motion.div>
+    </motion.button>
   );
 }

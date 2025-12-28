@@ -1,58 +1,53 @@
 # Weather App
 
-A modern, responsive weather application providing real-time data with a clean, polished UI. Built with Next.js, TypeScript, Tailwind CSS, and DaisyUI.
+A modern, production-ready weather application built with Next.js 15, React 19, and TypeScript. Features real-time weather data, smooth animations, and a polished user experience.
 
-**🌐 Live Site:** [https://opdev-weather.vercel.app](https://opdev-weather.vercel.app)
+**🌐 Live Demo:** [View Live](https://opdev-weather.vercel.app)
 
-## 🚀 Tech Stack
+## Tech Stack
 
-**Frontend:** Next.js 15.5.7, React 19.1, TypeScript  
-**Styling:** Tailwind CSS 4, DaisyUI 5  
-**Animations:** Motion  
-**APIs:** OpenWeatherMap
+- **Framework:** Next.js 15.5.9 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4, DaisyUI 5
+- **Animations:** Motion (Framer Motion)
+- **Testing:** Jest, React Testing Library
+- **API:** OpenWeatherMap
 
-## ✨ Key Features
+## Key Features
 
-- **City Search:** Instant weather by city name
-- **Live Data:** Temperature, wind speed, and humidity
-- **Theme-aware UI:** Light/Dark toggle with persistence
-- **Responsive Design:** Mobile-first layout that scales beautifully
-- **Smooth Animations:** Subtle motion for state changes
+- **Real-time Weather Data** - Current conditions, temperature, wind, humidity, pressure, and visibility
+- **Advanced Animations** - 3D card effects, staggered entrances, animated number counting using Motion
+- **Defensive Programming** - Comprehensive input validation, API response validation, and error handling
+- **Type Safety** - Full TypeScript coverage with runtime validation
+- **Responsive Design** - Mobile-first approach with adaptive layouts
+- **Dark/Light Theme** - System preference detection with manual toggle
+- **Accessibility** - ARIA labels, keyboard navigation, semantic HTML
+- **Test Coverage** - Unit tests for utilities, hooks, and components
 
-## 🏃 Quick Start
+## Quick Start
 
-### Prerequisites
-- Node.js 18+
-- OpenWeatherMap API key
-
-### Setup
 ```bash
 npm install
-cp .env.local.example .env.local
-# Set OPENWEATHERMAP_API_KEY in .env.local
+# Create .env.local with OPENWEATHERMAP_API_KEY
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+## Project Highlights
 
-**Required Environment Variables:**
-- `OPENWEATHERMAP_API_KEY` - API key from [OpenWeatherMap](https://openweathermap.org/api)
+- **API Route Protection** - Server-side validation, timeout handling, and sanitization
+- **Error Handling** - User-friendly inline notifications with auto-dismiss
+- **Performance** - Optimized images, lazy loading, and efficient state management
+- **Code Quality** - ESLint, TypeScript strict mode, comprehensive test suite
 
-## 📁 Project Structure
+## Scripts
 
+- `npm run dev` - Start development server
+- `npm run build` - Production build
+- `npm run test` - Run test suite
+- `npm run lint` - Lint code
+
+## Environment Variables
+
+```env
+OPENWEATHERMAP_API_KEY=your_api_key_here
 ```
-weather-app/
-├── src/
-│   ├── app/          # Next.js app router pages
-│   ├── components/   # UI components
-│   ├── hooks/        # Custom React hooks
-│   ├── types/        # TypeScript type definitions
-│   └── utils/        # Utility functions
-└── public/           # Static assets
-```
-
-## 🔒 API Integration
-
-- OpenWeatherMap API integration
-- Environment variable protection for API keys
-- Error handling for API failures

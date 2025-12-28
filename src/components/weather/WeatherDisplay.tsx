@@ -1,17 +1,27 @@
 import { motion, AnimatePresence } from "motion/react";
 import { WeatherCard } from "./WeatherCard";
 import { WeatherDetails } from "./WeatherDetails";
+import { EmptyState } from "./EmptyState";
+import { LoadingSkeleton } from "./LoadingSkeleton";
 import { WeatherData } from "../../types/weather";
 import { fade, transitions } from "../../utils/animations";
 
 interface WeatherDisplayProps {
   weatherData: WeatherData | null;
+  loading?: boolean;
 }
 
-export function WeatherDisplay({ weatherData }: WeatherDisplayProps) {
+export function WeatherDisplay({
+  weatherData,
+  loading = false,
+}: WeatherDisplayProps) {
+  if (loading) {
+    return <LoadingSkeleton />;
+  }
+
   return (
     <AnimatePresence mode="wait">
-      {weatherData && (
+      {weatherData ? (
         <motion.div
           key={weatherData.name}
           variants={fade}
@@ -26,6 +36,18 @@ export function WeatherDisplay({ weatherData }: WeatherDisplayProps) {
 
           {/* Details Cards */}
           <WeatherDetails weatherData={weatherData} />
+        </motion.div>
+      ) : (
+        <motion.div
+          key="empty"
+          variants={fade}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={transitions.normal}
+          className="w-full"
+        >
+          <EmptyState />
         </motion.div>
       )}
     </AnimatePresence>
