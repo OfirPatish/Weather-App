@@ -10,7 +10,6 @@ A modern, production-ready weather application built with Next.js 15, React 19, 
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS 4, DaisyUI 5
 - **Animations:** Motion (Framer Motion)
-- **Testing:** Jest, React Testing Library
 - **API:** OpenWeatherMap
 
 ## Key Features
@@ -22,7 +21,6 @@ A modern, production-ready weather application built with Next.js 15, React 19, 
 - **Responsive Design** - Mobile-first approach with adaptive layouts
 - **Dark/Light Theme** - System preference detection with manual toggle
 - **Accessibility** - ARIA labels, keyboard navigation, semantic HTML
-- **Test Coverage** - Unit tests for utilities, hooks, and components
 
 ## Quick Start
 
@@ -37,13 +35,12 @@ npm run dev
 - **API Route Protection** - Server-side validation, timeout handling, and sanitization
 - **Error Handling** - User-friendly inline notifications with auto-dismiss
 - **Performance** - Optimized images, lazy loading, and efficient state management
-- **Code Quality** - ESLint, TypeScript strict mode, comprehensive test suite
+- **Code Quality** - ESLint, TypeScript strict mode
 
 ## Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Production build
-- `npm run test` - Run test suite
 - `npm run lint` - Lint code
 
 ## Environment Variables
